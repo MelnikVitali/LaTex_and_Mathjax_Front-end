@@ -1,0 +1,88 @@
+\documentclass[11pt]{report}
+
+
+% To set margin width, text height, space for footnotes and all sorts
+% of other settings related to the geometry of the pages in your
+% report, use the 'geometry' package. 
+%
+% http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=geometry
+
+\usepackage[margin=2cm]{geometry}
+
+
+% For inclusion of figures, use the 'graphicx' package. This allows
+% you to later include a figure using '\includegraphics{filename}' and
+% it will also for simple sizing of the figure in your text.
+%
+% http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=graphicx
+
+\usepackage{graphicx}
+
+
+% You may want to add hyperlinks to your document, which can be tricky
+% to typeset because they often have weird symbols in them which LaTeX
+% interprets in its own way. Use 'hyperref' for this. It also has many
+% options to add e.g. a list of thumbnails to your pdf file.
+%
+% http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=hyperref
+
+\usepackage{hyperref}
+
+
+
+% Finally, for various useful tools for mathematics typesetting, use
+% the 'amsmath' package with a few assorted companion packages which
+% provide extra symbols.
+%
+% http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=amsmath
+% http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=amssymb
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% For figure/table caption settings.
+
+%\usepackage{varwidth}
+%\usepackage[noonelinecaption=true]{caption}
+
+
+
+\begin{document}
+
+% The 'article' document class provides a simple way to make a title
+% page: 
+ 
+
+\chapter{A chapter on something}
+\label{c:intro}
+\section{A section}
+\subsection{A sub-section}
+
+Some text here. You can \emph{emphasise it} or {\bfseries make it
+  bold-face} or {\large larger} or \emph{\bfseries\large combine those
+  settings}. A random equation:
+\begin{equation}
+\label{e:Einstein1}
+E=mc^2 \,.
+\end{equation}
+If you want to align equations, use either {\tt align} or {\tt
+  aligned}. See the examples below. The difference is the way in which
+the equation numbers are added. Here is the option with the two
+equations receiving only one number:
+\begin{equation}
+\label{e:Einstein2}
+\begin{aligned}
+E &= mc^2  \\
+i\hbar \frac{\partial}{\partial t} |\psi, t\rangle 
+  &= \hat{H} |\psi,t\rangle\,,
+\end{aligned}
+\end{equation}
+and here is the one where every equation gets its own number:
+\begin{align}
+\label{e:Einstein3}
+E &= mc^2  \\
+\end{align}
+
+
+\end{document}
+
