@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { pxToRem } from '../../utils/pxToRem';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -12,26 +13,21 @@ const useStyles = makeStyles(theme => ({
         padding: '50px '
     },
     btn: {
-        textTransform: 'none !important',
-        margin: '0 150px 50px!important'
+        textTransform: 'none',
+        backgroundColor: theme.palette.success.dark,
+        // margin: `0 ${pxToRem(150)} ${pxToRem(50)}`
     },
-    card: {
-        width: '100%'
+    uploadBtn: {
+        textTransform: 'none',
+        paddingRight:pxToRem(12),
+        paddingLeft:pxToRem(12)
+        // backgroundColor: theme.palette.primary.main,
     },
-    tableCell: {
-        minWidth: '150'
-    },
-    tableCellError: {
-        backgroundColor: '#f4cccc',
-        border: '1px solid rgb(224, 224, 224);'
-    },
-    errorFile: {
-        width: '40%',
-        margin: '0 auto 40px',
-        textAlign: 'center',
-        fontSize: 22,
-        backgroundColor: '#f4cccc',
-        padding: 16
+    label: {
+        marginRight: pxToRem(30),
+        marginLeft: pxToRem(30),
+        paddingRight: pxToRem(10),
+        paddingLeft: pxToRem(14)
     }
 }));
 

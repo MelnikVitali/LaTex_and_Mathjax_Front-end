@@ -1,31 +1,37 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
+
 import {
     Box,
-    Button, Fab,
+    Button, Container, Fab,
     Typography,
 } from '@material-ui/core';
 
 import AddIcon from '@material-ui/icons/Add';
 
 import ShowLatex from '../ShowLatex';
+import Preloader from '../Preloader';
+
+import { APIUrls } from '../../configs/APIUrls';
+import { useDispatch, useSelector } from 'react-redux';
+import { convertedFile, fetchConvertFile } from '../../store/convertFileReducers';
 
 import useStyles from './styles';
-import axios from 'axios';
-import Preloader from '../Preloader';
 
 const LatexContainer = () => {
     const classes = useStyles();
 
     const inputRef = useRef(null);
 
+    const dispatch = useDispatch();
+
+    const {html, loading} = useSelector(convertedFile);
+
     const [file, setFile] = useState('');
-    const [html, setHtml] = useState('');
-    const [isFetching, setIsFetching] = useState(false);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
 
-        console.log(file);
         const fileExtension = file.name.split('.').splice(-1, 1)[0];
 
         if (fileExtension !== 'tex') {
@@ -43,32 +49,17 @@ const LatexContainer = () => {
 
         formData.append('filedata', file);
 
-        setIsFetching(true);
 
-        axios.post('http://localhost:5000/upload', formData, {}).then(res => {
+        dispatch(fetchConvertFile(formData));
+        setFile('');
 
-            console.log(res.data);
-
-            setFile('');
-            setHtml(res.data);
-            setIsFetching(false);
-
-            inputRef.current.value = '';
-        }).catch(error => {
-            console.log(error);
-
-            setHtml('');
-            setFile('');
-            setIsFetching(false);
-
-            inputRef.current.value = '';
-        });
+        inputRef.current.value = '';
     };
 
     return (
         <>
-            {isFetching ? <Preloader /> : null}
-            <div className={classes.root} >
+            {loading ? <Preloader /> : null}
+            <Container component="main" className={classes.root} >
                 <Typography variant="h3" component="h1" className={classes.title} >
                     Upload and read LaTeX files in React.js
                 </Typography >
@@ -77,8 +68,8 @@ const LatexContainer = () => {
                     id="uploadForm"
                     onSubmit={handleFileUpload}
                 >
-                    {file  && <Box component='span'> {file.name}</Box>}
-                    <label htmlFor="upload-file" style={{marginRight: 30, marginLeft: 30, paddingRight: 10}} >
+                    {file && <Box component="span" > {file.name}</Box >}
+                    <label htmlFor="upload-file" className={classes.label} >
                         <input
                             // style={{display: 'none'}}
                             type="file"
@@ -90,12 +81,12 @@ const LatexContainer = () => {
                             ref={inputRef}
                         />
                         <Fab
-                            color="secondary"
-                            size="small"
+                            size="large"
+                            color='primary'
                             component="span"
                             aria-label="add"
                             variant="extended"
-                            style={{textTransform: 'none'}}
+                            className={classes.uploadBtn}
                         >
                             <AddIcon />Upload file
                         </Fab >
@@ -103,18 +94,17 @@ const LatexContainer = () => {
 
                     <Button
                         disabled={!file}
+                        size='large'
                         htmlFor="sampleFile"
                         variant="contained"
-                        color="primary"
-                        // component="label"
                         type="submit"
-                        style={{textTransform: 'none'}}
+                        className={classes.btn}
                     >
                         Submit file
                     </Button >
                 </form >
-                <ShowLatex >{html}</ShowLatex >
-            </div >
+                {html && <ShowLatex >{html}</ShowLatex >}
+            </Container >
         </>
     );
 };

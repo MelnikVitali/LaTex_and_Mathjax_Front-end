@@ -2,20 +2,16 @@ import React from 'react';
 
 import MathJax from 'mathjax3-react';
 
+import useStyles from './styles';
 
 const ShowLatex = (props) => {
+    const classes = useStyles();
 
     return (
-        <div style={{
-            display: 'flex', flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%'
-        }} >
-            <MathJax.Provider>
-                <MathJax.Html html={props.children}/>
-            </MathJax.Provider>
-
+        <div className={classes.root} >
+            <MathJax.Provider >
+                <MathJax.Html html={props.children} />
+            </MathJax.Provider >
         </div >
     );
 };
