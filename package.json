@@ -11,6 +11,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:prod": "cross-env REACT_APP_BASE_API_URL=https://production.com react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -21,6 +22,7 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21.1",
     "better-react-mathjax": "^1.0.2",
     "http-proxy-middleware": "^2.0.1",
@@ -32,7 +34,11 @@
     "react-katex": "^2.0.2",
     "react-markdown": "^4.3.1",
     "react-mathjax": "^1.0.1",
+    "react-redux": "^7.2.4",
     "react-scripts": "^4.0.2",
+    "react-toastify": "^7.0.4",
+    "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9",
     "remark-math": "^2.0.1",
     "xlsx": "^0.16.9"
   },
