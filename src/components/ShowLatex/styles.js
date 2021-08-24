@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { pxToRem } from '../../utils/pxToRem';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -6,7 +7,9 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingTop: pxToRem(50),
+        textAlign: 'center'
     },
 }));
 
