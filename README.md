@@ -1,18 +1,3 @@
-# MathJax_and_LaTeX_App
-
-https://github.com/MelnikVitali/read_check_output_to_table_csv-file_react
-
-## Technology Stack
-
-- React with React Hooks 
-
-- React styles & libraries: Material-UI
-
-- date-fns
-
-- xlsx
-
--------------------------------------------
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
